@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Voughkhabbeauxlaireigh Lhyrnyrr</title>
+<link rel="icon" type="image/x-icon" href="assets/icon.ico">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-view="library">
+<header class="top">
+  <button id="brand" class="brand" type="button" title="About &amp; credits"><img src="assets/icon.ico" alt="" width="24" height="24"><span>Voughkhabbeauxlaireigh Lhyrnyrr</span></button>
+  <nav id="nav">
+    <button data-go="library" class="on">Library</button>
+    <button data-go="flash" disabled>Flashcards</button>
+    <button data-go="match" disabled>Match</button>
+  </nav>
+  <span class="grow"></span>
+  <div id="sessionTag" class="session-tag" hidden></div>
+  <div class="top-actions">
+    <button id="guideBtn" class="iconbtn" title="Keyboard guide" aria-label="Keyboard guide">?</button>
+    <button id="setBtn" class="iconbtn" title="Settings: theme &amp; fonts (S)" aria-label="Settings" aria-expanded="false">&#9881;</button>
+  </div>
+</header>
+<div id="setPanel" class="setpanel" hidden></div>
+
+<main id="main"></main>
+
+<!-- Music player -->
+<aside id="player" class="player" aria-label="Music player">
+  <button id="plToggle" class="pl-fold" title="Show player (H)" aria-label="Show player">&#9834;</button>
+  <div class="pl-body">
+    <div class="pl-title" id="plTitle">No music loaded</div>
+    <div class="pl-ctrl">
+      <button id="plShuffle" aria-label="Shuffle" title="Shuffle (B)" aria-pressed="false">&#8644;</button>
+      <button id="plPrev" aria-label="Previous song" title="Previous (,)">&#9198;</button>
+      <button id="plPlay" aria-label="Play or pause" class="big" title="Play / pause (K)">&#9654;</button>
+      <button id="plNext" aria-label="Next song" title="Next (.)">&#9197;</button>
+      <button id="plLoop" aria-label="Repeat mode" title="Repeat: all (N)" data-mode="all">&#8635;</button>
+    </div>
+    <button id="plMute" title="Mute (M)" aria-label="Mute" aria-pressed="false">&#128266;</button>
+    <input id="plVol" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="Volume">
+    <button id="plList" aria-label="Track list" title="Track list (L)">&#9776;</button>
+    <label class="pl-add" title="Add songs from your device (saved in this browser)">&#65291;<input id="plFiles" type="file" accept="audio/*" multiple hidden></label>
+    <button id="plHide" title="Hide player (H)" aria-label="Hide player">&#8964;</button>
+    <div id="plMenu" class="pl-menu" hidden></div>
+  </div>
+</aside>
+
+
+<!-- credit popup (opens when the app name is clicked) -->
+<div id="credit" class="credit" role="dialog" aria-modal="true" aria-labelledby="credit-title" hidden>
+  <div class="credit-card">
+    <h2 id="credit-title">Voughkhabbeauxlaireigh Lhyrnyrr</h2>
+    <p>Version 1.0</p>
+    <p id="credit-text">Intellectual property of Nguyen Thien Nhan, HCMUTE-24110114</p>
+    <h3>Music</h3>
+    <ul>
+      <li>Classic by
+        <a href="https://www.joakimkarud.com/use-my-music/" target="_blank" rel="noopener">Joakim Karud</a>, Creative Commons Attribution (CC BY)
+      </li>
+      <li>Dreams by Dj Quads</li>
+    </ul>
+    <h3>Fonts</h3>
+    <ul>
+      <li>
+        Two Fifty Six Bytes by
+        <a href="https://www.typodermicfonts.com" target="_blank" rel="noopener">Ray Larabie</a>, CC0 (public domain)
+      </li>
+    </ul>
+    <button id="credit-close" type="button">Close</button>
+  </div>
+</div>
+
+<!-- keyboard guide (opens from the ? button) -->
+<div id="guide" class="credit" role="dialog" aria-modal="true" aria-labelledby="guide-title" hidden>
+  <div class="credit-card guide-card">
+    <h2 id="guide-title">Keyboard guide</h2>
+    <p>Shortcuts are ignored while you are typing in a text box. The section for the current screen is highlighted.</p>
+    <div id="guideBody" class="guide-grid"></div>
+    <button id="guide-close" type="button">Close</button>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<dialog id="dlg">
+  <form id="dlgForm">
+    <h3 id="dlgTitle"></h3>
+    <p id="dlgMsg"></p>
+    <input id="dlgInput" type="text" autocomplete="off">
+    <div class="dlg-btns">
+      <button type="button" id="dlgCancel">Cancel</button>
+      <button type="submit" id="dlgOk" class="primary">OK</button>
+    </div>
+  </form>
+</dialog>
+
+<audio id="audio" preload="none"></audio>
+<script src="js/reader.js"></script>
+<script src="audios/playlist.js" onerror="void 0"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
